@@ -1,1 +1,31 @@
+#include<iostream>
+#include<map>
+#include<iomanip>
+using namespace std;
+int main()
+{
+  int k;pair<int, double> p;map<int, double> m;
+  cin >> k;
+  for (int i = 0;i < k;++i) {
+    cin >> p.first >> p.second;
+    m.insert(p);
+  }
+  cin >> k;
+  for (int i = 0;i < k; ++i) {
+    cin >> p.first >> p.second;
+    if (m.find(p.first) == m.end())
+      m.insert(p);
+    else {
+      m[p.first] += p.second;
+      if (!m[p.first])
+        m.erase(p.first);
+    }
+  }
+  cout << m.size();
+  for (auto i = m.rbegin();i != m.rend();++i)
+    cout << " " << i->first << " " << setiosflags(ios::fixed) << setprecision(1) << i->second;
+}
 
+map,pair表示多项式，过程用“流”处理，效率很高只用1ms。
+这是我写的第一个C++项目，学会了如何构建数据结构，练习了map的添加和删除元素 insert[key,value],erase[key]
+其实这题我特别得意过程的优化，一开始我是先得出结果多项式再删除0项的，后来意识到用流思想可以直接在生成的时候就判断并删除，速度果然提高了
