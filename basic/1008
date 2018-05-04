@@ -1,1 +1,20 @@
+//交换头尾，循环m次，觉得类似插入排序
 
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	int A[100];
+	for (int i = 0;i < n;++i)cin >> A[i];
+
+	while(m--){
+		int temp = A[n - 1];
+		for (int i = n-1;i > 0;--i) A[i] = A[i-1];
+		A[0] = temp;
+	}
+	cout << A[0];
+	for (int i = 1;i < n;++i)cout <<" "<<A[i];
+}
