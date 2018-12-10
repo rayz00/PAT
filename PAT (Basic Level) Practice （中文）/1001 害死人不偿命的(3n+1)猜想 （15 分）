@@ -10,7 +10,7 @@
 3
 输出样例：
 5
-
+```
 #include<stdio.h>
 int main()
 {
@@ -22,4 +22,5 @@ int main()
 	}
 	printf("%d", cnt);
 }
+```
 [/code]
