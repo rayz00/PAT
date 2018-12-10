@@ -35,8 +35,6 @@ int main()
 	}
 }
 
-
-
 C++:
 #include<iostream>
 #include<string>
@@ -44,12 +42,18 @@ using namespace std;
 
 int main()
 {
-	string s;
+	string s;								//使用string类型
 	cin >> s;
+	string book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
 	int sum = 0;
-	for (auto i : s) sum += i - '0';
-	string tmp = to_string(sum);
-	string book[10] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
-	cout << book[tmp[0] - '0'];
-	for (int i = 1;i < tmp.length();++i) cout << " " << book[tmp[i] - '0'];
+	for (int i = 0; s[i]; ++i)
+		sum += s[i] - '0';
+//	for (auto i : s)						//C++11
+//		sum += i - '0';						
+	string tmp = to_string(sum);			//数字转为字符串
+	for (int i = 0; tmp[i]; ++i) {			//遍历字符串
+		if (i)
+			cout << ' ';
+		cout << book[tmp[i] - '0'];
+	}
 }
