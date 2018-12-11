@@ -8,8 +8,7 @@
 输出样例：
 yi san wu
 //字符串与数字，数字拆解
-C:
-#include<stdio.h>
+#include<stdio.h>	//C
 #include<string.h>
 int main()
 {
@@ -33,8 +32,7 @@ int main()
 	}
 }
 
-C++:
-#include<iostream>
+#include<iostream>	//C++
 #include<string>
 using namespace std;
 
