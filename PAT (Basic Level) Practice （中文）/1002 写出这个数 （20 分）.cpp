@@ -41,7 +41,7 @@ using namespace std;
 
 int main()
 {
-	string s;	//使用string类型
+	string s;
 	cin >> s;
 	string book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
 	int sum = 0;
