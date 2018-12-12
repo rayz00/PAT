@@ -7,7 +7,8 @@
 1234567890987654321123456789
 输出样例：
 yi san wu
-/*字符串与数字，数字拆解*/
+/*字符串和数字的转换，用循环拆解数字
+*/
 //C
 #include<stdio.h>	
 #include<string.h>
@@ -33,7 +34,7 @@ int main()
 	}
 }
 
-//C++
+//C++ 直接使用字符串类型
 #include<iostream>	
 #include<string>
 using namespace std;
