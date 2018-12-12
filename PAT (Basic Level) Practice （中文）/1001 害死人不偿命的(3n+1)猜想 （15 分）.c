@@ -9,7 +9,8 @@
 3
 输出样例：
 5
-
+/*循环，分支
+*/
 #include<stdio.h>
 int main()
 {
