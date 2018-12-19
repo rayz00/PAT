@@ -8,16 +8,14 @@
 输出样例：
 yi san wu
 
-//C 	循环拆数字(还有循环组合数字)
+//C 	循环拆数字
 #include<stdio.h>	
 #include<string.h>
 int main()
 {
-	char s[100];	//不可用char *s定义字符串 因为指针没有指向有效的内存可能非法。
-	scanf("%s", s); 
-//	gets(s);	  输入一行。PAT的C(gcc)编译器不支持gets()函数，但是C(clang)支持甚至自带常用头文件,如stdio.h和string.h
-	const char book[][5] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	//对照表使用const，可用二维数组（第二个数字表示字符串长度）或指针数组表示字符串列表。
-//	const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	
+	char s[100];		//不可用char *s定义字符串 因为指针没有指向有效的内存可能非法。
+	scanf("%s", s); 	//或者用gets(s)输入行。但PAT的C(gcc)编译器不支持gets()，C(clang)支持
+	const char book[][5] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	//可用二维数组（第二个数字表示字符串长度）或指针数组表示字符串列表const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	
 	int sum = 0;
 	for (int i = 0; i < strlen(s); ++i)
 		sum += s[i] - '0';
@@ -26,7 +24,7 @@ int main()
 		result[t++] = sum % 10;
 		sum /= 10;
 	}
-	for (int i = t - 1; i >= 0; --i) {	//倒序输出
+	for (int i = t - 1; i >= 0; --i) {	//倒序遍历数组
 		printf("%s", book[result[i]]);
 		if (i != 0)
 			printf(" ");
@@ -43,12 +41,10 @@ int main()
 	cin >> s;
 	string book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
 	int sum = 0;
-	for (int i = 0; s[i]; ++i)
-		sum += s[i] - '0';
-//	for (auto i : s)	//C++11
-//		sum += i - '0';						
-	string tmp = to_string(sum);		//字符串
-	for (int i = 0; tmp[i]; ++i) {		//遍历
+	for (int i = 0; s[i]; ++i)		//C++ 11      for (auto i : s) sum += i - '0';
+		sum += s[i] - '0';					
+	string tmp = to_string(sum);		//int类型转换为字符串类型
+	for (int i = 0; tmp[i]; ++i) {
 		if (i)
 			cout << ' ';
 		cout << book[tmp[i] - '0'];
