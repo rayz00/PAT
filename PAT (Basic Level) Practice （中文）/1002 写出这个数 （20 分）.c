@@ -17,7 +17,7 @@ int main()
 	scanf("%s", s); 	//或者用gets(s)输入行。但PAT的C(gcc)编译器不支持gets()，C(clang)支持
 	const char book[][5] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	//可用二维数组（第二个数字表示字符串长度）或指针数组表示字符串列表const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	
 	int sum = 0;
-	for (int i = 0; i < strlen(s); ++i)
+	for (int i = 0; s[i]; ++i)
 		sum += s[i] - '0';
 	int t=0,result[10] = { 0 };		//拆数字
 	while (sum) {
