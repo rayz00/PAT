@@ -32,13 +32,24 @@ int main()
 	}
 }	
 
-
-
-
-
-
-
-
+//通用拆数字的方法
+#include <iostream>
+using namespace std;	
+int main()
+{		
+	int n, N[3] = {0},t = 0;
+	cin >> n;
+	while (n) {
+		N[t++] = n % 10;
+		n /= 10;
+	}
+	while (N[2]--)
+		cout << 'B';
+	while (N[1]--)
+		cout << 'S';
+	for (int i = 1; i <= N[0]; ++i)
+		cout << i;
+}
 
 //python
 s=list(input())
