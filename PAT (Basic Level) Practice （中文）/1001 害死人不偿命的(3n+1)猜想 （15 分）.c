@@ -22,3 +22,18 @@ int main()
 	}
 	printf("%d", cnt);
 }
+
+// 另一种方法
+#include<stdio.h>
+int main()
+{
+	int n, cnt = 0;
+	scanf("%d", &n);
+	while (n != 1) {
+            	if(n%2)
+            		n=3*n+1;
+        	n/=2;
+        	cnt++;
+	}
+	printf("%d", cnt);
+}
