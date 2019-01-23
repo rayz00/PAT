@@ -51,5 +51,47 @@ int main()
 	}
 }
 
+//调整m值 m%=n可以减少很多重复操作，如果m=0,就不用操作。观察规律，使用反转完成目标
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int main() {
+	int n, m;
+	cin >> n >> m;
+	vector<int> A(n);
+	for (int i = 0; i < n; i++)
+		cin >> A[i];
+	m %= n;
+	if (m) {
+		reverse(A.begin(), A.begin() + n);
+		reverse(A.begin(), A.begin() + m);
+		reverse(A.begin() + m, A.begin() + n);
+	}
+	for (int i = 0; i < n - 1; i++)
+		cout << A[i] << " ";
+	cout << A[n - 1];
+}
+
+
+//数组也是一样的
+#include <iostream>
+using namespace std;	
+int main()
+{
+	int n, m, A[100];
+	cin >> n >> m;
+	for (int i = 0; i < n; i++)
+		cin >> A[i];
+	m %= n;
+	if (m) {
+		reverse(A, A + n);
+		reverse(A, A + m);
+		reverse(A + m, A + n);
+	}
+	for (int i = 0; i < n - 1; i++)
+		cout << A[i] << " ";
+	cout << A[n - 1];
+}
 
 
