@@ -17,4 +17,28 @@ Mary EE990830 95
 输出样例：
 Mike CS991301
 Joe Math990112
+//并不需要使用排序
 
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	int n, max = 0, min = 100, score;
+	string maxname, maxnumber, minname, minnumber, name, number;
+	cin >> n;
+	while (n--) {
+		cin >> name >> number >> score;
+		if (score<=min) {
+			minname = name;
+			minnumber = number;
+			min = score;
+		}
+		if (score>=max) {
+			maxname = name;
+			maxnumber = number;
+			max = score;
+		}
+	}
+	cout << maxname << " " << maxnumber << endl << minname << " " << minnumber << endl;
+}
