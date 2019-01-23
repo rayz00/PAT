@@ -11,12 +11,12 @@
 输出样例：
 7 6
 
-//蹩脚的程序，"卡拉兹"筛类似素数筛
+//"卡拉兹"筛类似素数筛，蹩脚版
 #include <iostream>
 #include <algorithm>
 using namespace std;	
-int A[10000];
-int B[100];
+int A[10000];	//筛子
+int B[100];	//豆子
 int main()
 {		
 	int k;
@@ -49,19 +49,37 @@ int main()
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//改进的地方：不使用A B这样意义不太明确的标识符；卡拉兹循环可以更简洁；格式化输出可以更简洁。
+#include <iostream>
+#include <algorithm>
+using namespace std;	
+int check[10000];
+int list[100];
+int main()
+{		
+	int k;
+	cin >> k;
+	for (int i = 0; i < k; ++i) {
+		cin >> list[i];
+		int t = list[i];
+		while (t != 1) {
+			if (t % 2 == 1)
+				t = 3 * t + 1;
+			t /= 2;
+			check[t] = 1;
+		}
+	}
+	sort(list, list + k);
+	int flag = 0;
+	for (int i = k - 1; i >= 0; --i) {
+		if (!check[list[i]]) {
+			if (flag)
+				cout << ' ';
+			cout << list[i];
+			flag = 1;
+		}
+	}
+}
 
 //python
 import re
