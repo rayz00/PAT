@@ -58,19 +58,20 @@ int main() {
 
 //cpp stack
 #include <iostream>
+#include <string>
 #include <stack>
 using namespace std;
 int main() {
-    stack<string> v;
-    string s;
-    while(cin >> s) 
-        v.push(s);
-    cout << v.top();
-    v.pop();
-    while(!v.empty()) {
-        cout << " " << v.top();
-        v.pop();
-    }
+	string s;
+	stack<string> sk;
+	while (cin >> s)
+		sk.push(s);
+	cout << sk.top();
+	sk.pop();
+	while (!sk.empty()) {
+		cout <<' '<< sk.top();
+		sk.pop();
+	}
 }
 
 //python大法好
