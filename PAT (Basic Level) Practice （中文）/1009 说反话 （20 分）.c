@@ -42,15 +42,36 @@ char *s[100]是指针数组，存储的是地址，实际内容是{0076D24C 0076
 char **s:不能定义二位数组，因为指针指向的位置未知，不能开辟内存空间。（但可以作为函数形参，比如main（）函数就有char **argv参数）
 */
 
+//cpp,  string数组，cin成功返回1，eof返回0
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+	string s,t[100];
+	int cnt = 0;
+	while (cin >> s)
+		t[cnt++] = s;
+	for (int i = cnt - 1; i > 0; --i)
+		cout << t[i] << ' ';
+	cout << t[0];
+}
 
-
-
-
-
-
-
-
-
+//cpp stack
+#include <iostream>
+#include <stack>
+using namespace std;
+int main() {
+    stack<string> v;
+    string s;
+    while(cin >> s) 
+        v.push(s);
+    cout << v.top();
+    v.pop();
+    while(!v.empty()) {
+        cout << " " << v.top();
+        v.pop();
+    }
+}
 
 //python大法好
 import re
