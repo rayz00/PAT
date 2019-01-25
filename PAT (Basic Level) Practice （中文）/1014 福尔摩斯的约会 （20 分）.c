@@ -19,7 +19,7 @@ using namespace std;
 int main() 
 {	
 	char s1[70], s2[70], s3[70], s4[70];
-	scanf("%s%s%s%s", s1, s2, s3, s4);
+	scanf("%s %s %s %s", s1, s2, s3, s4);
 	char week[][5] = { "MON","TUE","WED","THU","FRI","SAT","SUN" };
 	int a, b, c;
 	for (a = 0; s1[a]; ++a) {
@@ -27,18 +27,13 @@ int main()
 			break;
 	}
 	for (b = a + 1; s1[b];++b) {
-		if (s1[b] == s2[b] && ((s1[b] >= '0' && s1[b] <= '9') || (s1[b] >= 'A'&&s1[b] <= 'N')))     //开始我写了数字的0和9
+		if (s1[b] == s2[b] && ((s1[b] >= '0' && s1[b] <= '9') || (s1[b] >= 'A'&&s1[b] <= 'N')))  //我错误写了数字0和9
 			break;
 	}
 	for (c = 0; s3[c]; ++c) {
-		if (s3[c] == s4[c]&&isalpha(s3[c]))           //开始我写s3[c]>='a'&&s3[c]<='z',判断条件写错了
+		if (s3[c] == s4[c]&&isalpha(s3[c]))   //我错误写了s3[c]>='a'&&s3[c]<='z',题目没有明确限定小写字母
 			break;
 	}
-	cout << week[s1[a]-'A'] << ' ';
-	int t = 0;
-	if (s1[b] >= '0'&&s1[b] <= '9')
-		t = s1[b] - '0';
-	else if (s1[b] >= 'A'&&s1[b] <= 'N')
-		t = s1[b] - 'A' + 10;
-	printf("%02d:%02d", t,c);		
+	int h = (s1[b] >= '0'&&s1[b] <= '9' ? s1[b] - '0' : s1[b] - 'A' + 10);
+	printf("%s %02d:%02d", week[s1[a] - 'A'], h, c);
 }
