@@ -8,30 +8,36 @@
 输出样例：
 yi san wu
 
-//C 	循环拆数字
+//C 字符串，拆整数
 #include<stdio.h>	
 #include<string.h>
 int main()
 {
-	char s[100];		//不可用char *s定义字符串 因为指针没有指向有效的内存可能非法。
-	scanf("%s", s); 	//或者用gets(s)输入行。但PAT的C(gcc)编译器不支持gets()，C(clang)支持
-	const char book[][5] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	//可用二维数组（第二个数字表示字符串长度）或指针数组表示字符串列表const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };	
+	char s[100];		//scanf输入需要确切的地址，char *s不行。因为指针没有指向有效的内存可能非法，不能开辟内存空间
+	scanf("%s", s);
+	const char book[][5] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
+	//字符串数组，使用字符串常量初始化，可以定义为char s[][]，也可以加const char s[][]。
+	//使用指针的话必须加const才能用字符串常量初始化：const char *s[]	
+	//char s[][]不可以用字符串常量修改字符串数组的值，但可以用scanf修改
+	//const char *s[]可以用字符串常量修改字符串数组，但不可以用scanf修改了
+	//const char s[][]不能做任何修改
+	//在这里，const char book[][5]是最准确的。字符串的详情见/algorithm/c/字符串
 	int sum = 0;
 	for (int i = 0; s[i]; ++i)
 		sum += s[i] - '0';
-	int t=0,result[10] = { 0 };		//拆数字
+	int t=0,result[10] = { 0 };		//拆数字，存放到数组里，还可以拆成其他进制表示
 	while (sum) {
 		result[t++] = sum % 10;
 		sum /= 10;
 	}
-	for (int i = t - 1; i >= 0; --i) {	//倒序遍历数组
-		printf("%s", book[result[i]]);
+	for (int i = t - 1; i >= 0; --i) {	//需要一个辅助量帮忙格式化输出，大部分情况可以利用循环变量i；或者单独输出头尾
+		printf("%s", book[result[i]]);  //如果没有循环变量i 也不好单独输出头尾的话，可以定义一个int flag=0帮忙输出
 		if (i != 0)
 			printf(" ");
 	}
 }
 
-//C++ 	字符串类型
+//C++ 字符串类型和函数
 #include<iostream>	
 #include<string>
 using namespace std;
@@ -41,9 +47,9 @@ int main()
 	cin >> s;
 	string book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
 	int sum = 0;
-	for (int i = 0; s[i]; ++i)		//C++ 11      for (auto i : s) sum += i - '0';
+	for (int i = 0; s[i]; ++i)		//for (auto i : s) sum += i - '0';
 		sum += s[i] - '0';					
-	string tmp = to_string(sum);		//int类型转换为字符串类型
+	string tmp = to_string(sum);		//类型转换函数
 	for (int i = 0; tmp[i]; ++i) {
 		if (i)
 			cout << ' ';
