@@ -15,14 +15,13 @@ int main()
 {
 	char s[100];		//scanf输入需要确切的地址，char *s不行。因为指针没有指向有效的内存可能非法，不能开辟内存空间
 	scanf("%s", s);
-	const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
-	
-	//字符串数组，使用字符串常量初始化，可以定义为char s[][]，也可以加const char s[][]。
-	//使用指针的话必须加const才能用字符串常量初始化：const char *s[]	
-	//char s[][]不可以用字符串常量修改字符串数组的值，但可以用scanf修改
-	//const char *s[]可以用字符串常量修改字符串数组，但不可以用scanf修改了
-	//const char s[][]不能做任何修改
-	//在这里，const char book[][5]是最准确的。字符串的详情见/algorithm/c/字符串
+	const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" }; 
+	//字符串数组，也可以表示为数组形式char book[][10],const char book[][10]。但指针形式节省开销，
+	//简单总结：
+	//数组形态可以初始化和输入，不可赋值。
+	//指针形式必须加const，可以初始化和赋值，但不可输入
+	//数组形态拷贝字符串内容，指针形态只存储字符串地址。
+	//详情见/algorithm/c/字符串 字符串数组
 	int sum = 0;
 	for (int i = 0; s[i]; ++i)
 		sum += s[i] - '0';
@@ -32,7 +31,7 @@ int main()
 		sum /= 10;
 	}
 	for (int i = t - 1; i >= 0; --i) {	//需要一个辅助量帮忙格式化输出，大部分情况可以利用循环变量i；或者单独输出头尾
-		printf("%s", book[result[i]]);  //如果没有循环变量i 也不好单独输出头尾的话，可以定义一个int flag=0帮忙输出
+		printf("%s", book[result[i]]);  //如果没有循环变量i 也不方便单独输出头尾的话，可以定义一个flag
 		if (i != 0)
 			printf(" ");
 	}
