@@ -1,5 +1,7 @@
+
 宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人
 ，君子而与之，与其得小人，不若得愚人。”
+
 现给出一批考生的德才分数，请根据司马光的理论给出录取排名。
 输入格式：
 输入第一行给出 3 个正整数，分别为：N（≤10^5)，即考生总数；L（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（<100），为
@@ -40,3 +42,51 @@
 10000014 66 60
 10000008 75 79
 10000001 64 90
+
+//如果在一个数组里，排序规则复杂极了，灵机一动分为4个数组！竟然超时！scanf printf大法好  
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int N, L, H, cnt = 0;
+struct stu {
+	int id;
+	int d;
+	int c;
+}t;
+
+bool cmp(const stu & a, const stu & b) {
+	if (a.d + a.c == b.d + b.c) {
+		if (a.d == b.d)
+			return a.id < b.id;
+		return a.d > b.d;
+	}
+	return a.d + a.c > b.d + b.c;
+}
+
+int main() 
+{
+	vector<stu> v[4];
+	cin >> N >> L >> H;
+	while (N--) {
+		scanf("%d %d %d", &t.id, &t.d, &t.c);
+//		cin >> t.id >> t.d >> t.c;
+		if (t.d >= H && t.c >= H)
+			v[0].push_back(t);
+		else if (t.d >= H && t.c < H&&t.c>=L)
+			v[1].push_back(t);
+		else if (t.d < H&&t.d>=L&&t.c < H&&t.c>=L&&t.d >= t.c)
+			v[2].push_back(t);
+		else if (t.d >= L && t.c >= L)
+			v[3].push_back(t);
+	}
+	cnt = v[0].size() + v[1].size() + v[2].size() + v[3].size();
+	for (int i = 0; i < 4; ++i)
+		sort(v[i].begin(), v[i].end(), cmp);
+	cout << cnt << endl;
+	for (int i = 0; i < 4; ++i)
+		for (auto i : v[i])
+			printf("%d %d %d\n", i.id, i.d, i.c);
+//			cout << i.id << ' ' << i.d << ' ' << i.c << endl;
+}	
