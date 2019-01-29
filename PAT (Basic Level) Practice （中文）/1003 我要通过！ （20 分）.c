@@ -28,6 +28,34 @@ NO
 NO
 NO
 
+//理解题意就已经很难了，找到规律不容易，正确的解题思路就更难了。
+//很巧妙的方法。利用线性和树形结构的优点获取信息。我之前总想着怎么分割字符串，判断字符什么的。
+#include <iostream>
+#include <map>
+#include <string.h>
+using namespace std;
+int main()
+{	
+	char s[100];
+	int n;
+	cin >> n;
+	while (n--) {
+		cin >> s;
+		int a = 0, b = 0;
+		map<char, int> mp;
+		for (int i = 0; s[i]; ++i) {
+			mp[s[i]]++;
+			if (s[i] == 'P')
+				a = i;
+			if (s[i] == 'T')
+				b = i;
+		}
+		if (mp['P'] == 1 && mp['T'] == 1 && mp['A'] && mp.size() == 3 && a*(b - a - 1) == (strlen(s) - b - 1))
+			cout << "YES" << endl;
+		else
+			cout << "NO" << endl;
+	}
+}	
 
 
 //  python
