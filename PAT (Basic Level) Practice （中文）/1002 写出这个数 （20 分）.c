@@ -15,7 +15,8 @@ int main()
 {
 	char s[100];		//scanf输入需要确切的地址，char *s不行。因为指针没有指向有效的内存可能非法，不能开辟内存空间
 	scanf("%s", s);
-	const char book[][5] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
+	const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
+	
 	//字符串数组，使用字符串常量初始化，可以定义为char s[][]，也可以加const char s[][]。
 	//使用指针的话必须加const才能用字符串常量初始化：const char *s[]	
 	//char s[][]不可以用字符串常量修改字符串数组的值，但可以用scanf修改
