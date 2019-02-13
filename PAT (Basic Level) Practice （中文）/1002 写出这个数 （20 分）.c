@@ -15,29 +15,26 @@ int main()
 {
 	char s[100];		//scanf输入需要确切的地址，char *s不行。因为指针没有指向有效的内存可能非法，不能开辟内存空间
 	scanf("%s", s);
-	const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" }; 
-	//字符串数组，也可以表示为数组形式char book[][10],const char book[][10]。但指针形式节省开销，
-	//简单总结：
-	//数组形态可以初始化和输入，不可赋值。
-	//指针形式必须加const，可以初始化和赋值，但不可输入
-	//数组形态拷贝字符串内容，指针形态只存储字符串地址。
-	//详情见/algorithm/c/字符串 字符串数组
-	int sum = 0;
+	const char *book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
+	//注意指针数组和字符串数组的区别。字符串数组直接存储字符串内容，而指针数组只存地址，该地址指向字符串常量，字符串本身不在该数组里。
+	//指针数组必须加const才能类型一致指向字符串常量，可以初始化和赋值（指针重指向），不可输入（不可修改字符串常量）。
+	//字符串数组（char book[][10],const char book[][10]）可以初始化和cin scanf输入，不可用字符串常量赋值。加const后只可scanf输入，不可cin输入。
+	int sum = 0;				//求和  	
 	for (int i = 0; s[i]; ++i)
 		sum += s[i] - '0';
-	int t=0,result[10] = { 0 };		//拆数字，存放到数组里，还可以拆成其他进制表示
+	int t=0,result[10] = { 0 };		//拆数字存到数组，也可以拆成其他进制
 	while (sum) {
 		result[t++] = sum % 10;
 		sum /= 10;
 	}
-	for (int i = t - 1; i >= 0; --i) {	//需要一个辅助量帮忙格式化输出，大部分情况可以利用循环变量i；或者单独输出头尾
-		printf("%s", book[result[i]]);  //如果没有循环变量i 也不方便单独输出头尾的话，可以定义一个flag
+	for (int i = t - 1; i >= 0; --i) {	//格式化输出需要一个辅助量，利用头尾或循环变量i或者单独定义一个flag
+		printf("%s", book[result[i]]);  
 		if (i != 0)
 			printf(" ");
 	}
 }
 
-//C++ 字符串类型和函数
+//C++ 字符串，库函数
 #include<iostream>	
 #include<string>
 using namespace std;
@@ -47,9 +44,9 @@ int main()
 	cin >> s;
 	string book[] = { "ling","yi","er","san","si","wu","liu","qi","ba","jiu" };
 	int sum = 0;
-	for (int i = 0; s[i]; ++i)		//for (auto i : s) sum += i - '0';
-		sum += s[i] - '0';					
-	string tmp = to_string(sum);		//类型转换函数
+	for (auto i : s) 			//求和 
+		sum += i - '0';
+	string tmp = to_string(sum);		//int转string库函数
 	for (int i = 0; tmp[i]; ++i) {
 		if (i)
 			cout << ' ';
