@@ -28,23 +28,23 @@ NO
 NO
 NO
 
-//理解题意就已经很难了，找到规律不容易，正确的解题思路就更难了。
-//很巧妙的方法。利用线性和树形结构的优点获取信息。我之前总想着怎么分割字符串，判断字符什么的。
+//找规律类型的题目比较少，理解题意就有点难。我总想着分割字符串，判断字符什么的，C字符串的工具不多，处理很麻烦。
+//体现了线性表和树各自的优势，需要活用数据结构，开拓了思路。
 #include <iostream>
 #include <map>
 #include <string.h>
 using namespace std;
 int main()
 {	
-	char s[100];
 	int n;
 	cin >> n;
+	char s[100];
 	while (n--) {
 		cin >> s;
 		int a = 0, b = 0;
 		map<char, int> mp;
-		for (int i = 0; s[i]; ++i) {
-			mp[s[i]]++;
+		for (int i = 0; s[i]; ++i) {		//树结构统计种类和个数，线结构定位
+			mp[s[i]]++;			//树容器用法 
 			if (s[i] == 'P')
 				a = i;
 			if (s[i] == 'T')
@@ -57,8 +57,7 @@ int main()
 	}
 }	
 
-
-//  python
+//  python处理字符串容易点
 import re  
 n=input()  
 for i in range(int(n)):  
