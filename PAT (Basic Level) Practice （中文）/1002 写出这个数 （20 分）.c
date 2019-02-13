@@ -47,7 +47,7 @@ int main()
 	for (auto i : s) 			//求和 
 		sum += i - '0';
 	string tmp = to_string(sum);		//int转string库函数
-	for (int i = 0; tmp[i]; ++i) {
+	for (int i = 0; tmp[i]; ++i) {		//string类型依然可以按照c方式遍历，也可以用迭代器 
 		if (i)
 			cout << ' ';
 		cout << book[tmp[i] - '0'];
