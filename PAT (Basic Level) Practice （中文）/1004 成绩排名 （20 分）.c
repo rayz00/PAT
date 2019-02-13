@@ -17,8 +17,8 @@ Mary EE990830 95
 输出样例：
 Mike CS991301
 Joe Math990112
-//并不需要使用排序
 
+//并不需要排序，迭代出极值就好
 #include<iostream>
 #include<string>
 using namespace std;
