@@ -12,7 +12,7 @@
 输出样例：
 5
 
-//c	循环 分支
+//循环和分支
 #include<stdio.h>
 int main()
 {
@@ -25,17 +25,10 @@ int main()
 	printf("%d", cnt);
 }
 
-// 另一种循环方式
-#include<stdio.h>
-int main()
-{
-	int n, cnt = 0;
-	scanf("%d", &n);
-	while (n != 1) {
-            	if(n%2)
-            		n=3*n+1;
-        	n/=2;
-        	cnt++;
-	}
-	printf("%d", cnt);
-}
+/*分支部分有多种写法
+		n = n % 2 ? (3 * n + 1) / 2 : n / 2;
+		或者
+		if (n % 2)
+			n = 3 * n + 1;
+		n /= 2;
+*/
