@@ -11,33 +11,13 @@ BBSSS1234
 23
 输出样例 2：
 SS123
-//取出输入数的百位，十位，个位。就是循环的次数。
-#include <iostream>
-using namespace std;	
-int main()
-{		
-	int n, a = 0, b = 0, c = 0;
-	cin >> n;
-	c = n % 10;
-	n /= 10;
-	b = n % 10;
-	n /= 10;
-	a = n % 10;
-	for (int i = 0; i < a; ++i)
-		cout << 'B';
-	for (int i = 0; i < b; ++i)
-		cout << 'S';
-	for (int i = 1; i <= c; ++i) {
-		cout << i;
-	}
-}	
 
-//通用拆数字的方法
+//拆数字，百位 十位 个位就是循环的次数
 #include <iostream>
 using namespace std;	
 int main()
 {		
-	int n, N[3] = {0},t = 0;
+	int n, N[3] = {0},t = 0;	//012分别存放个位 十位 百位。数组应初始化为0。  
 	cin >> n;
 	while (n) {
 		N[t++] = n % 10;
