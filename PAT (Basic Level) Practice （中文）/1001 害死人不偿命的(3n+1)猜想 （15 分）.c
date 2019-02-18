@@ -12,7 +12,6 @@
 输出样例：
 5
 
-//循环和分支
 #include<stdio.h>
 int main()
 {
