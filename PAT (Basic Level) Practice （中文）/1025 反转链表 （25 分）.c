@@ -27,3 +27,33 @@ Address Data Next
   
 //思维误区：开始我总想着创建链表，把这些节点都塞进去操作。还纠结要不要用STL的list容器，这样实在很难搞。
 //按照这题输入的方式，首先要使用数组把输入存起来，再捋出链表，再排序。从头到尾都是数组，压根没链表
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct node{
+    int addr;
+    int data;
+    int next;
+}L[100000],*result[100000];            //L存输入，result指针数组捋出链表
+
+int main()
+{
+    int A,N,K;
+    cin>>A>>N>>K;
+    for(int i=0;i<N;++i){
+        node tmp;
+        cin>>tmp.addr>>tmp.data>>tmp.next;
+        L[tmp.addr]=tmp;
+    }
+    int t=0;                          //链表的实际长度不一定=N
+    for(int i=A;i!=-1;i=L[i].next){
+        result[t++]=&L[i];
+    }
+    for(int i=0;i<t-t%K;i+=K){
+        reverse(result+i,result+i+K);
+    }
+    for(int i=0;i<t-1;++i)
+        printf("%05d %d %05d\n",result[i]->addr,result[i]->data,result[i+1]->addr);
+    printf("%05d %d -1",result[t-1]->addr,result[t-1]->data);
+}
