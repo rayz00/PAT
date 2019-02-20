@@ -10,7 +10,7 @@ _hs_s_a_es
 输出样例：
 7TI
 
-
+//这题我可得意了，活用之前学到知识，map统计字符串元素
 #include <iostream>
 #include <map>
 #include <algorithm>
