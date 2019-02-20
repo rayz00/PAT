@@ -22,17 +22,17 @@ int main()
 	map<char, int> mp;
 	char s1[100], s2[100];
 	cin >> s1 >> s2;
-	for (int i = 0; s1[i]; ++i) {
+	for (int i = 0; s1[i]; ++i) {			//把s1都变成大写字母，map容器统计字符个数
 		if (s1[i]>='a'&&s1[i]<='z')
 			s1[i] = toupper(s1[i]);
 		mp[s1[i]]++;
 	}
-	for (int i = 0; s2[i]; ++i) {
+	for (int i = 0; s2[i]; ++i) {			//s2也都变为大写字母方便比较，如果出现过了 次数置0
 		if (s2[i] >= 'a'&&s2[i] <= 'z')
 			s2[i] = toupper(s2[i]);
 		mp[s2[i]] = 0;
 	}
-	for (int i = 0; s1[i]; ++i) {
+	for (int i = 0; s1[i]; ++i) {			//遍历s1，次数不是0的打印出来，次数置0避免重复打印 
 		if (mp[s1[i]]) {
 			cout << s1[i];
 			mp[s1[i]] = 0;
