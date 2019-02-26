@@ -10,6 +10,24 @@
 输出样例：
 _hs_s_a_tst
 
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()		
+{
+	string s1, s2;
+	getline(cin, s1);
+	getline(cin, s2);
+	for (int i = 0; s2[i]; ++i) {
+		if (s1.find(toupper(s2[i])) != -1)
+			continue;
+		if (s1.find('+')!=-1 && isupper(s2[i]))
+			continue;
+		cout << s2[i];
+	}
+}
+
 //ugly code没什么好的想法，按照定义做的  getline()是为了防止第一行为空 这个设定挺坑的
 #include <iostream>
 #include <string>
