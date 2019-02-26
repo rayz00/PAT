@@ -26,7 +26,7 @@ All passed。
 输出样例2：
 All passed
 
-
+//坑点是前17位可能含有字母 不全是数字 
 #include <stdio.h>
 
 int main()
