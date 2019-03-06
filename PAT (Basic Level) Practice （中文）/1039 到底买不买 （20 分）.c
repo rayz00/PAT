@@ -35,5 +35,28 @@ else:
     print('No',(len(n)-m.count(None)))
     
     
-    
+#include <iostream>
+#include <map>	
+using namespace std;
+	
+int main()		
+{	
+	string s1, s2;
+	cin >> s1 >> s2;
+	map<char, int> mp1, mp2;
+	int i, cnt = 0;
+	for (i = 0; s1[i]; ++i)
+		mp1[s1[i]]++;
+	for (i = 0; s2[i]; ++i)
+		mp2[s2[i]]++;
+
+	for (auto i:mp2) {
+		if (i.second > mp1[i.first])
+			cnt += (i.second - mp1[i.first]);
+	}
+	if (cnt == 0)
+		cout << "Yes" << ' ' << s1.size() - s2.size();
+	else
+		cout << "No" << ' ' << cnt;
+}	    
 
